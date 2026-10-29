@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0718"><title>MOEDACRAFT — Duelo da Moeda</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="ambient ambient-a"></div><div class="ambient ambient-b"></div><div class="grid-bg"></div>
+  <main class="shell">
+    <header class="topbar"><div class="brand-mark">M<span>✦</span></div><div class="brand"><div class="eyebrow">DUEL SYSTEM / ONLINE</div><h1>MOEDA<span>CRAFT</span></h1></div><div class="online-pill"><i></i> MULTIPLAYER</div></header>
+    <section id="lobby" class="lobby panel">
+      <div class="hero-copy"><div class="eyebrow purple">SORTE. EGO. CAOS.</div><h2>Uma moeda.<br><span>Dois rivais.</span></h2><p>Escolha seu lado. A moeda decide o destino. Que vença o menos azarado.</p></div>
+      <div class="lobby-form"><label for="playerName">TEU NOME</label><input id="playerName" maxlength="18" value="Sr. Andri" placeholder="Seu nome">
+        <button id="createBtn" class="btn btn-primary"><span>＋</span> CRIAR SALA</button>
+        <div class="or"><span></span> OU ENTRA NO CAOS <span></span></div>
+        <label for="roomCode">CÓDIGO DA SALA</label><div class="join-row"><input id="roomCode" maxlength="6" placeholder="ABC123" autocomplete="off"><button id="joinBtn" class="btn btn-secondary">ENTRAR ↗</button></div>
+        <p id="lobbyError" class="error" role="alert"></p>
+      </div>
+      <div class="lobby-foot"><span>● 100% NA SORTE</span><span>SEM CHORO, SÓ MOEDA</span><span>V. 1.0</span></div>
+    </section>
+
+    <section id="game" class="hidden">
+      <div class="room-strip panel"><div><div class="eyebrow">SALA PRIVADA</div><strong id="roomCodeLabel">------</strong></div><button id="copyBtn" class="btn btn-small">⧉ COPIAR CÓDIGO</button><div class="round-tag">RODADA <b id="roundNum">1</b></div></div>
+      <div class="arena">
+        <article class="player-card panel" id="playerCard0"><div class="player-avatar avatar-blue">A</div><div class="player-label">JOGADOR 01</div><h3 id="playerName0">Sr. Andri</h3><div class="score" id="score0">0</div><div class="score-label">PONTOS</div><div id="choiceStatus0" class="choice-status">AGUARDANDO</div></article>
+        <div class="coin-zone"><div class="coin-glow"></div><div id="coin" class="coin"><div class="coin-face coin-front"><span>MC</span><small>CARA</small></div><div class="coin-face coin-back"><span>✦</span><small>COROA</small></div></div><div id="coinCaption" class="coin-caption">A SORTE ESTÁ LANÇADA</div><div id="resultBanner" class="result-banner hidden"></div></div>
+        <article class="player-card panel" id="playerCard1"><div class="player-avatar avatar-pink">C</div><div class="player-label">JOGADOR 02</div><h3 id="playerName1">Caio</h3><div class="score" id="score1">0</div><div class="score-label">PONTOS</div><div id="choiceStatus1" class="choice-status">AGUARDANDO</div></article>
+      </div>
+      <section class="battle-panel panel"><div class="battle-head"><div><div class="eyebrow">FAÇA SUA ESCOLHA</div><h2>Qual lado vai cair?</h2></div><div class="status-pill" id="connectionStatus"><i></i> CONECTADO</div></div>
+        <div class="choice-buttons"><button class="choice-btn" data-choice="cara"><span class="choice-coin cara-icon">MC</span><span>CARA</span><small>O lado clássico</small></button><button class="choice-btn" data-choice="coroa"><span class="choice-coin coroa-icon">✦</span><span>COROA</span><small>O lado lendário</small></button></div>
+        <p id="gameMessage" class="game-message">Esperando o rival entrar...</p><div class="action-row"><button id="nextBtn" class="btn btn-primary hidden">PRÓXIMA RODADA ↗</button><button id="resetBtn" class="btn btn-secondary hidden">REINICIAR PARTIDA ↻</button></div>
+      </section>
+      <section class="history-panel panel"><div class="history-head"><div><div class="eyebrow">REGISTRO DE BATALHA</div><h2>Últimas rodadas</h2></div><span class="history-count" id="historyCount">0 / 8</span></div><div id="historyList" class="history-list"><div class="empty-history">A história ainda não foi escrita.</div></div></section>
+      <footer class="game-footer"><span>MOEDACRAFT © 2026</span><span>FEITO PARA UMA RIVALIDADE DE ALTO NÍVEL (NEM TANTO)</span></footer>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/game.js"></script>
+</body></html>
